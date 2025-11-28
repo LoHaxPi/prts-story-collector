@@ -279,6 +279,14 @@ async function main() {
 
                 if (href.includes('Special:') || href.includes('File:') || href.includes('action=') || href.includes('Talk:')) return;
 
+                // User requested exclusions:
+                // 1. Skip MO stages (Mini-Annihilation)
+                if (text.includes('MO-') || href.includes('MO-')) return;
+                // 2. Skip Intelligence Processing Room links
+                if (text.includes('情报处理室') || href.includes('情报处理室')) return;
+                // 3. Skip raw index.php links
+                if (href.includes('/index.php')) return;
+
                 if (isStoryLink || isNormalStage) {
                     storyLinks.push({
                         title: text,
